@@ -1,0 +1,12 @@
+# Django
+DJANGO_SETTINGS_MODULE=xxxxxxxxxxxxxxxxxxxxx
+DJANGO_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxx
+DEBUG=xxxxxxxxxxxxxxxxxxxxx
+
+# Django DB
+DATABASE_ENGINE=xxxxxxxxxxxxxxxxxxxxx
+DATABASE_NAME=xxxxxxxxxxxxxxxxxxxxx
+DATABASE_USERNAME=xxxxxxxxxxxxxxxxxxxxx
+DATABASE_PASSWORD=xxxxxxxxxxxxxxxxxxxxx
+DATABASE_HOST=xxxxxxxxxxxxxxxxxxxxx
+DATABASE_PORT=xxxxxxxxxxxxxxxxxxxxx
