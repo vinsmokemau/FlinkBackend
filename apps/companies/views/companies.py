@@ -24,7 +24,9 @@ class CompanyViewSet(mixins.CreateModelMixin,
                      mixins.UpdateModelMixin,
                      mixins.ListModelMixin,
                      viewsets.GenericViewSet):
-    """Company viewset."""
+    """
+    API endpoint that allows  CRUD operations on the Company model.
+    """
 
     serializer_class = CompanyModelSerializer
     lookup_field = 'id'
@@ -45,6 +47,7 @@ class CompanyViewSet(mixins.CreateModelMixin,
 
     @action(detail=True, methods=['patch'])
     def change_status(self, request, id=None):
+        """Change the attribue 'is_active' of a specific Company model."""
         company = self.get_object()
         serializer = CompanyChangeStatusSerializer(data=request.data)
         if serializer.is_valid():

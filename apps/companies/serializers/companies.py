@@ -50,6 +50,7 @@ class CompanyModelSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if data.get('symbol', None):
+            # Validate if the incoming symbol is a NYSE valid symbol.
             if not is_nyse_symbol(data["symbol"]):
                 raise serializers.ValidationError(
                     "This symbol is'nt included in the NYSE"
@@ -57,12 +58,14 @@ class CompanyModelSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+        # Extract the current value to make an initial list of market values.
         value = validated_data.pop("value")
         validated_data["market_values"] = [value]
         return Company.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         if validated_data.get("value", None):
+            # Append the current value to the market values
             value = validated_data.pop("value")
             instance.market_values.append(value)
             instance.save()
@@ -70,5 +73,8 @@ class CompanyModelSerializer(serializers.ModelSerializer):
 
 
 class CompanyChangeStatusSerializer(serializers.Serializer):
+    """
+    This serializer is used to get the active values and validate the attribute
+    """
 
     is_active = serializers.BooleanField()

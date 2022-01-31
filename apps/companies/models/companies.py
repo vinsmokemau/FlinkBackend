@@ -10,8 +10,10 @@ from apps.utils.models import BaseModel
 
 
 class Company(BaseModel):
-    """Company model
-    ."""
+    """Company model:
+    A company is our entity of the NYSE companies.
+    To create a new company the symbol need to be in the NYSE symbols list.
+    """
 
     id = models.UUIDField(
         primary_key=True,
