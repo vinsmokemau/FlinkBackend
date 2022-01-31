@@ -1,6 +1,5 @@
 """Development settings."""
 
-import os
 from .base import *  # NOQA
 
 # Base

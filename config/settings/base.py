@@ -27,12 +27,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DJANGO_DEBUG', False)
 
 # Language and timezone
-TIME_ZONE = 'America/Mexico_City'
 LANGUAGE_CODE = 'en-us'
-SITE_ID = 1
+TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+SITE_ID = 1
 
 # DATABASES
 DATABASES = {
@@ -171,3 +171,6 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Finnhub
+FINNHUB_APIKEY = os.getenv('FINNHUB_APIKEY')

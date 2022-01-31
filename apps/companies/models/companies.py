@@ -10,8 +10,10 @@ from apps.utils.models import BaseModel
 
 
 class Company(BaseModel):
-    """Company model
-    ."""
+    """Company model:
+    A company is our entity of the NYSE companies.
+    To create a new company the symbol need to be in the NYSE symbols list.
+    """
 
     id = models.UUIDField(
         primary_key=True,
@@ -25,6 +27,7 @@ class Company(BaseModel):
         models.DecimalField(max_digits=19, decimal_places=2),
         blank=True
     )
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Company"
@@ -32,6 +35,3 @@ class Company(BaseModel):
 
     def __str__(self):
         return self.name
-
-    def save(self):
-        pass

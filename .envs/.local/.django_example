@@ -10,3 +10,6 @@ DATABASE_USERNAME=xxxxxxxxxxxxxxxxxxxxx
 DATABASE_PASSWORD=xxxxxxxxxxxxxxxxxxxxx
 DATABASE_HOST=xxxxxxxxxxxxxxxxxxxxx
 DATABASE_PORT=xxxxxxxxxxxxxxxxxxxxx
+
+# Finnhub
+FINNHUB_APIKEY=xxxxxxxxxxxxxxxxxxxxx
