@@ -25,6 +25,7 @@ class Company(BaseModel):
         models.DecimalField(max_digits=19, decimal_places=2),
         blank=True
     )
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Company"
@@ -32,6 +33,3 @@ class Company(BaseModel):
 
     def __str__(self):
         return self.name
-
-    def save(self):
-        pass

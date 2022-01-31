@@ -1,4 +1,4 @@
-"""Circle views."""
+"""Company views."""
 
 # Django REST Framework
 from rest_framework import mixins, viewsets
@@ -22,16 +22,18 @@ class CompanyViewSet(mixins.CreateModelMixin,
     """Company viewset."""
 
     serializer_class = CompanyModelSerializer
+    lookup_field = 'id'
 
     # Filters
     filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
-    search_fields = ('uuid', 'name', 'symbol')
+    search_fields = ('id', 'name', 'symbol')
     ordering_fields = ('name', 'created')
-    ordering = ('name')
-    filter_fields = ('symbol')
+    ordering = ('name',)
+    filter_fields = ('symbol',)
 
     def get_queryset(self):
-        """Get the objects we want in the request.
-        If in the future we want filters or segmentations we can do it here."""
+        """Restrict list to active-only."""
         queryset = Company.objects.all()
+        if self.action == 'list':
+            return queryset.filter(is_active=True)
         return queryset
