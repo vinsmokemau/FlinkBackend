@@ -27,9 +27,6 @@ class CompanyModelSerializer(serializers.ModelSerializer):
         ),
         read_only=True,
     )
-    is_active = serializers.BooleanField(
-        read_only=True,
-    )
     created_at = serializers.DateTimeField(
         read_only=True,
     )
@@ -46,7 +43,6 @@ class CompanyModelSerializer(serializers.ModelSerializer):
             'description',
             'symbol',
             'market_values',
-            'is_active',
             'created_at',
             'updated_at',
             'value',
@@ -64,3 +60,15 @@ class CompanyModelSerializer(serializers.ModelSerializer):
         value = validated_data.pop("value")
         validated_data["market_values"] = [value]
         return Company.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        if validated_data.get("value", None):
+            value = validated_data.pop("value")
+            instance.market_values.append(value)
+            instance.save()
+        return instance
+
+
+class CompanyChangeStatusSerializer(serializers.Serializer):
+
+    is_active = serializers.BooleanField()
