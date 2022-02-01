@@ -138,6 +138,16 @@ TEMPLATES = [
     },
 ]
 
+# Email
+EMAIL_BACKEND = os.getenv('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+
+# Admin
+ADMIN_URL = 'admin/'
+ADMINS = [
+    ("""Mau Munguia""", 'mauricio.munguia@makingmex.com'),
+]
+MANAGERS = ADMINS
+
 # Static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
