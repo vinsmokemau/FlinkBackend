@@ -68,7 +68,12 @@ class CompanyModelSerializer(serializers.ModelSerializer):
             # Append the current value to the market values
             value = validated_data.pop("value")
             instance.market_values.append(value)
-            instance.save()
+
+        for attr, value in validated_data.items():
+            # Update instance with validated data
+            setattr(instance, attr, value)
+        instance.save()
+
         return instance
 
 
