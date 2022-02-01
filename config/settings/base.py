@@ -27,12 +27,11 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DJANGO_DEBUG', False)
 
 # Language and timezone
-TIME_ZONE = 'America/Mexico_City'
 LANGUAGE_CODE = 'en-us'
-SITE_ID = 1
+TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
+SITE_ID = 1
 
 # DATABASES
 DATABASES = {
@@ -71,7 +70,9 @@ THIRD_PARTY_APPS = [
     'corsheaders',
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'apps.companies',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -137,6 +138,16 @@ TEMPLATES = [
     },
 ]
 
+# Email
+EMAIL_BACKEND = os.getenv('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+
+# Admin
+ADMIN_URL = 'admin/'
+ADMINS = [
+    ("""Mau Munguia""", 'mauricio.munguia@makingmex.com'),
+]
+MANAGERS = ADMINS
+
 # Static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
@@ -169,3 +180,6 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Finnhub
+FINNHUB_APIKEY = os.getenv('FINNHUB_APIKEY')

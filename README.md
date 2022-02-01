@@ -9,6 +9,13 @@ docker-compose -f local.yml build
 docker-compose -f local.yml up
 ```
 
+## Test project
+
+
+```sh
+docker-compose -f local.yml exec django python manage.py test apps.companies.tests
+```
+
 ## Contact
 
 Vinsmoke Mau – [@vinsmokemau](https://twitter.com/vinsmokemau) – mauricio.munguia@makingmex.com
